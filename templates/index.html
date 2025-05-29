@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Hotel Reservation Prediction | AI-Powered Analytics</title>
+</head>
+
+
+<body>
+    <div class="background-pattern"></div>
+    <div class="container">
+        <div class="header">
+            <div class="header-icon">
+                <i class="fas fa-hotel"></i>
+            </div>
+            <h1>Hotel Reservation Prediction</h1>
+            <p class="subtitle">AI-powered prediction system to forecast reservation cancellations</p>
+        </div>
+
+        <form method="POST" class="prediction-form">
+            <div class="form-section">
+                <h3><i class="fas fa-calendar-alt"></i> Booking Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lead_time">
+                            <i class="fas fa-clock"></i>
+                            Lead Time (days)
+                        </label>
+                        <input type="number" id="lead_time" name="lead_time" required min="0" placeholder="e.g., 30">
+                        <span class="input-hint">Days between booking and arrival</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="arrival_month">
+                            <i class="fas fa-calendar"></i>
+                            Arrival Month
+                        </label>
+                        <select id="arrival_month" name="arrival_month" required>
+                            <option value="">Select month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="arrival_date">
+                            <i class="fas fa-calendar-day"></i>
+                            Arrival Date
+                        </label>
+                        <select id="arrival_date" name="arrival_date" required>
+                            <option value="">Select date</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3><i class="fas fa-bed"></i> Stay Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="no_of_week_nights">
+                            <i class="fas fa-moon"></i>
+                            Weeknight Stays
+                        </label>
+                        <input type="number" id="no_of_week_nights" name="no_of_week_nights" required min="0" placeholder="e.g., 2">
+                        <span class="input-hint">Number of weeknights</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="no_of_weekend_nights">
+                            <i class="fas fa-sun"></i>
+                            Weekend Stays
+                        </label>
+                        <input type="number" id="no_of_weekend_nights" name="no_of_weekend_nights" required min="0" placeholder="e.g., 1">
+                        <span class="input-hint">Number of weekend nights</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="room_type_reserved">
+                            <i class="fas fa-door-open"></i>
+                            Room Type
+                        </label>
+                        <select id="room_type_reserved" name="room_type_reserved" required>
+                            <option value="">Select room type</option>
+                            <option value="0">Standard Room</option>
+                            <option value="1">Deluxe Room</option>
+                            <option value="2">Premium Room</option>
+                            <option value="3">Executive Suite</option>
+                            <option value="4">Presidential Suite</option>
+                            <option value="5">Family Room</option>
+                            <option value="6">Luxury Suite</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3><i class="fas fa-concierge-bell"></i> Services & Pricing</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="avg_price_per_room">
+                            <i class="fas fa-dollar-sign"></i>
+                            Average Price per Room
+                        </label>
+                        <input type="number" id="avg_price_per_room" name="avg_price_per_room" required min="0" step="0.01" placeholder="e.g., 150.00">
+                        <span class="input-hint">Price in USD</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type_of_meal_plan">
+                            <i class="fas fa-utensils"></i>
+                            Meal Plan
+                        </label>
+                        <select id="type_of_meal_plan" name="type_of_meal_plan" required>
+                            <option value="">Select meal plan</option>
+                            <option value="0">Continental Plan</option>
+                            <option value="1">American Plan</option>
+                            <option value="2">European Plan</option>
+                            <option value="3">No Meal Plan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="no_of_special_request">
+                            <i class="fas fa-star"></i>
+                            Special Requests
+                        </label>
+                        <input type="number" id="no_of_special_request" name="no_of_special_request" required min="0" placeholder="e.g., 2">
+                        <span class="input-hint">Number of special requests</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3><i class="fas fa-chart-line"></i> Market Information</h3>
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="market_segment_type">
+                            <i class="fas fa-users"></i>
+                            Market Segment
+                        </label>
+                        <select id="market_segment_type" name="market_segment_type" required>
+                            <option value="">Select market segment</option>
+                            <option value="0">Aviation</option>
+                            <option value="1">Complimentary</option>
+                            <option value="2">Corporate</option>
+                            <option value="3">Offline</option>
+                            <option value="4">Online</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="predict-btn">
+                <i class="fas fa-magic"></i>
+                Generate Prediction
+                <span class="btn-shine"></span>
+            </button>
+        </form>        {% if prediction is not none %}
+        <!-- Prediction Modal Overlay -->
+        <div class="prediction-modal-overlay" id="predictionModal">
+            <div class="prediction-modal">
+                <div class="modal-header">
+                    <h2>🎯 Prediction Complete!</h2>
+                    <button class="close-modal" onclick="closePredictionModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="prediction-result {% if prediction == 0 %}high-risk{% else %}low-risk{% endif %}">
+                    <div class="result-visual">
+                        <div class="result-circle">
+                            {% if prediction == 0 %}
+                            <i class="fas fa-exclamation-triangle"></i>
+                            {% else %}
+                            <i class="fas fa-check-circle"></i>
+                            {% endif %}
+                        </div>
+                        <div class="result-percentage">
+                            {% if prediction == 0 %}
+                            <span class="percentage-text">High Risk</span>
+                            <div class="risk-indicator risk-high"></div>
+                            {% else %}
+                            <span class="percentage-text">Low Risk</span>
+                            <div class="risk-indicator risk-low"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="result-details">
+                        {% if prediction == 0 %}
+                        <h3 class="result-title">⚠️ High Cancellation Risk</h3>
+                        <p class="result-description">
+                            Our AI model predicts that this customer has a <strong>high likelihood</strong> of canceling their reservation.
+                        </p>
+                        <div class="action-recommendations">
+                            <h4>🎯 Recommended Actions:</h4>
+                            <ul>
+                                <li>🎁 Offer special incentives or upgrades</li>
+                                <li>📞 Follow up with personalized communication</li>
+                                <li>💰 Consider flexible cancellation policies</li>
+                                <li>📧 Send reminder emails with value propositions</li>
+                            </ul>
+                        </div>
+                        {% else %}
+                        <h3 class="result-title">✅ Low Cancellation Risk</h3>
+                        <p class="result-description">
+                            Great news! Our AI model predicts that this customer has a <strong>low likelihood</strong> of canceling their reservation.
+                        </p>
+                        <div class="action-recommendations">
+                            <h4>🎯 Recommended Actions:</h4>
+                            <ul>
+                                <li>✨ Prepare standard welcome amenities</li>
+                                <li>📋 Ensure room is ready as per specifications</li>
+                                <li>🎪 Consider upselling additional services</li>
+                                <li>📧 Send pre-arrival confirmation and details</li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-new-prediction" onclick="resetForm()">
+                        <i class="fas fa-plus"></i>
+                        New Prediction
+                    </button>
+                    <button class="btn-download" onclick="downloadReport()">
+                        <i class="fas fa-download"></i>
+                        Download Report
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Compact result for non-modal view -->
+        <div class="result-container-compact" style="display: none;">
+            <div class="result-compact {% if prediction == 0 %}cancellation{% else %}no-cancellation{% endif %}">
+                <div class="result-icon">
+                    {% if prediction == 0 %}
+                    <i class="fas fa-times-circle"></i>
+                    {% else %}
+                    <i class="fas fa-check-circle"></i>
+                    {% endif %}
+                </div>
+                <div class="result-content">
+                    <h3>Prediction Result</h3>
+                    {% if prediction == 0 %}
+                    <p class="result-text">High risk of cancellation</p>
+                    {% else %}
+                    <p class="result-text">Low risk of cancellation</p>
+                    {% endif %}
+                </div>
+                <button class="view-details-btn" onclick="showPredictionModal()">
+                    View Details
+                </button>
+            </div>
+        </div>
+        {% endif %}
+    </div>    <script>
+        // Add smooth animations and interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.prediction-form');
+            const inputs = document.querySelectorAll('input, select');
+            
+            // Add focus animations
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                });
+            });
+            
+            // Form submission loading state
+            form.addEventListener('submit', function() {
+                const button = document.querySelector('.predict-btn');
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Prediction...';
+                button.disabled = true;
+            });            // Auto-show modal if prediction exists
+            const hasPrediction = {{ 'true' if prediction is not none else 'false' }};
+            if (hasPrediction) {
+                setTimeout(() => {
+                    showPredictionModal();
+                }, 100);
+            }
+        });
+
+        // Modal functions
+        function showPredictionModal() {
+            const modal = document.getElementById('predictionModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                // Add animation
+                setTimeout(() => {
+                    modal.classList.add('show');
+                }, 10);
+            }
+        }
+
+        function closePredictionModal() {
+            const modal = document.getElementById('predictionModal');
+            if (modal) {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    // Show compact result instead
+                    const compactResult = document.querySelector('.result-container-compact');
+                    if (compactResult) {
+                        compactResult.style.display = 'block';
+                        compactResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 300);
+            }
+        }
+
+        function resetForm() {
+            if (confirm('Are you sure you want to start a new prediction? This will clear all current data.')) {
+                document.querySelector('.prediction-form').reset();
+                closePredictionModal();
+                const compactResult = document.querySelector('.result-container-compact');
+                if (compactResult) {
+                    compactResult.style.display = 'none';
+                }
+                // Scroll to top of form
+                document.querySelector('.prediction-form').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        }        function downloadReport() {
+            // Create a simple report
+            const predictionValue = {{ prediction if prediction is not none else 'null' }};
+            const reportData = {
+                timestamp: new Date().toISOString(),
+                prediction: predictionValue === 0 ? 'High Cancellation Risk' : 'Low Cancellation Risk',
+                risk_level: predictionValue === 0 ? 'HIGH' : 'LOW',
+                recommendations: predictionValue === 0 ? 
+                    ['Offer special incentives', 'Follow up with communication', 'Flexible policies', 'Reminder emails'] :
+                    ['Prepare amenities', 'Ensure room ready', 'Consider upselling', 'Send confirmation']
+            };
+            
+            const dataStr = JSON.stringify(reportData, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'hotel_prediction_report_' + new Date().getTime() + '.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('predictionModal');
+            if (modal && event.target === modal) {
+                closePredictionModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePredictionModal();
+            }
+        });
+    </script>
+</body>
+</html>
