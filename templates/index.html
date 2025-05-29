@@ -201,7 +201,8 @@
                 Generate Prediction
                 <span class="btn-shine"></span>
             </button>
-        </form>        {% if prediction is not none %}
+        </form>        {
+        % if prediction is not none %}
         <!-- Prediction Modal Overlay -->
         <div class="prediction-modal-overlay" id="predictionModal">
             <div class="prediction-modal">
