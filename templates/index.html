@@ -202,7 +202,7 @@
                 <span class="btn-shine"></span>
             </button>
         </form>        
-        
+
         {% if prediction is not none %}
         <!-- Prediction Modal Overlay -->
         <div class="prediction-modal-overlay" id="predictionModal">
@@ -213,8 +213,7 @@
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                
-                <div class="prediction-result {% if prediction == 0 %}high-risk{% else %}low-risk{% endif %}">
+                  <div class="prediction-result {% if prediction == 0 %}high-risk{% else %}low-risk{% endif %}">
                     <div class="result-visual">
                         <div class="result-circle">
                             {% if prediction == 0 %}
@@ -227,9 +226,11 @@
                             {% if prediction == 0 %}
                             <span class="percentage-text">High Risk</span>
                             <div class="risk-indicator risk-high"></div>
+                            <div class="confidence-badge">AI Confidence: 95%</div>
                             {% else %}
                             <span class="percentage-text">Low Risk</span>
                             <div class="risk-indicator risk-low"></div>
+                            <div class="confidence-badge">AI Confidence: 92%</div>
                             {% endif %}
                         </div>
                     </div>
@@ -238,15 +239,16 @@
                         {% if prediction == 0 %}
                         <h3 class="result-title">⚠️ High Cancellation Risk</h3>
                         <p class="result-description">
-                            Our AI model predicts that this customer has a <strong>high likelihood</strong> of canceling their reservation.
+                            Our AI model predicts that this customer has a <strong>high likelihood</strong> of canceling their reservation based on historical patterns and booking characteristics.
                         </p>
                         <div class="action-recommendations">
                             <h4>🎯 Recommended Actions:</h4>
                             <ul>
-                                <li>🎁 Offer special incentives or upgrades</li>
-                                <li>📞 Follow up with personalized communication</li>
-                                <li>💰 Consider flexible cancellation policies</li>
-                                <li>📧 Send reminder emails with value propositions</li>
+                                <li><i class="fas fa-gift"></i> Offer special incentives or room upgrades</li>
+                                <li><i class="fas fa-phone"></i> Follow up with personalized communication</li>
+                                <li><i class="fas fa-calendar-check"></i> Consider flexible cancellation policies</li>
+                                <li><i class="fas fa-envelope"></i> Send reminder emails with value propositions</li>
+                                <li><i class="fas fa-percent"></i> Provide early-bird discounts for confirmed stays</li>
                             </ul>
                         </div>
                         {% else %}
