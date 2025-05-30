@@ -3,7 +3,7 @@ pipeline{
 
     environment {
         VENV_DIR = 'venv'
-        GCP_PROJECT = "gentle-waters-459210-d0"
+        GCP_PROJECT = "your-gcp-project-ID"
         GCLOUD_PATH = "/var/jenkins_home/google-cloud-sdk/bin"       
     }
 
@@ -74,9 +74,7 @@ pipeline{
                             --image=gcr.io/${GCP_PROJECT}/hotel-reservation:latest \
                             --platform=managed \
                             --region=us-central1 \
-                            --allow-unauthenticated \
-                            ---service-account=mlops1@gentle-waters-459210-d0.iam.gserviceaccount.com
-                            
+                            --allow-unauthenticated 
                         '''
                     }
                 }

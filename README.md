@@ -188,8 +188,6 @@ Add the following roles to your service account:
 - **Owner** (full project access)
 - **Storage Admin** (for bucket access)
 - **Storage Object Viewer** (for reading data)
-- **Service Account User** (Assign runtime identity)
-- **Cloud Run Admin** (Manages Cloud Run deployments.)
 
 1. In the **"Grant this service account access to project"** section
 2. Click **"Select a role"** and add each role listed above
