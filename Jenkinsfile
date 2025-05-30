@@ -75,6 +75,7 @@ pipeline{
                             --platform=managed \
                             --region=us-central1 \
                             --allow-unauthenticated
+                            ---service-account=mlops1@gentle-waters-459210-d0.iam.gserviceaccount.com
                             
                         '''
                     }
