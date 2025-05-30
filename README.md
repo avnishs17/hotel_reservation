@@ -14,10 +14,8 @@ An end-to-end MLOps pipeline for predicting hotel reservation cancellations usin
 - [🎯 Project Overview](#-project-overview)
 - [🏗️ Architecture](#️-architecture)
 - [🚀 Quick Start](#-quick-start)
-- [☁️ Google Cloud Setup](#️-google-cloud-setup)
 - [🤖 Machine Learning Pipeline](#-machine-learning-pipeline)
 - [🔧 Local Development](#-local-development)
-- [🐳 Docker Deployment](#-docker-deployment)
 - [🔄 CI/CD with Jenkins](#-cicd-with-jenkins)
 
 ## 🎯 Project Overview
