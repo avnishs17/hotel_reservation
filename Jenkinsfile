@@ -74,7 +74,7 @@ pipeline{
                             --image=gcr.io/${GCP_PROJECT}/hotel-reservation:latest \
                             --platform=managed \
                             --region=us-central1 \
-                            --allow-unauthenticated
+                            --allow-unauthenticated \
                             ---service-account=mlops1@gentle-waters-459210-d0.iam.gserviceaccount.com
                             
                         '''
