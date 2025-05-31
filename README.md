@@ -180,16 +180,17 @@ Visit `http://localhost:8080` to access the web interface.
 4. Click **"Create and Continue"**
 
 #### Grant Required Roles
+Ensure that the service account has the following roles assigned:
 
-Add the following roles to your service account:
+- `roles/editor`
+- `roles/iam.serviceAccountUser`
+- `roles/run.admin`
+- `roles/storage.admin`
+- `roles/viewer`
 
-- **Owner** (full project access)
-- **Storage Admin** (for bucket access)
-- **Storage Object Viewer** (for reading data)
-
-1. In the **"Grant this service account access to project"** section
-2. Click **"Select a role"** and add each role listed above
-3. Click **"Continue"** → **"Done"**
+1. Go to **IAM & Admin** → **Service Accounts**
+2. Choose the **Service Account** you created
+3. Select **Manage Permissions** and selct the **roles** and click **Confirm**
 
 #### Download JSON Key File
 

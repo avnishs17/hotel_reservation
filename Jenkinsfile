@@ -3,7 +3,7 @@ pipeline{
 
     environment {
         VENV_DIR = 'venv'
-        GCP_PROJECT = "your-gcp-project-ID"
+        GCP_PROJECT = "gentle-waters-459210-d0"
         GCLOUD_PATH = "/var/jenkins_home/google-cloud-sdk/bin"       
     }
 
